@@ -30,10 +30,9 @@ Class VideoCommentDAO{
 
 		    $this->_VideoComment->setCommentID ( $row['CommentID']);
 		    $this->_VideoComment->setComment( $row['Comment'] );
-		    $this->_VideoComment->setCreatorID( $row['CreatorID'] );
+		    $this->_VideoComment->setCreator( $row['CreatorID'] );
 		    $this->_VideoComment->setVideo( $row['VideoID'] );
-		    $this->_VideoComment->setIsReply($row['IsReply']);
-		    $this->_VideoComment->setTopCommentID($row['TopCommentID']);
+		    $this->_VideoComment->setCommentTop($row['CommentIDTop']);
 
 
 		    $VideoCommentList[]=$this->_VideoComment;
@@ -54,17 +53,13 @@ Class VideoCommentDAO{
 	public function createVideoComment($VideoComment){
 
 		$VideoCommentID=$VideoComment->getCommentID();
-		
-		$VideoComment=$VideoComment->getComment();
-		$CreatorID=$VideoComment->getCreatorID();
 		$VideoID=$VideoComment->getVideoID();
-		$IsReply=$VideoComment->getIsReply();
-		$TopCommentID=$VideoComment->getTopCommentID();
+		$VideoComment=$VideoComment->getComment();
 		
 		$Creator=$_SESSION["globalUser"]->getID ();
 
-		$SQL = "INSERT INTO vtms_video_comment(CommentID,Comment,CreatorID,VideoID,IsReply,TopCommentID) 
-				VALUES('$VideoCommentID','$VideoComment','$CreatorID','$VideoID','$IsReply','$TopCommentID')";
+		$SQL = "INSERT INTO vtms_video_comment(CommentID,Comment,VideoID,CreatorID) 
+				VALUES('$VideoCommentID','$VideoComment','$VideoID','$Creator')";
 
 		//echo $SQL;
 
@@ -148,9 +143,8 @@ Class VideoCommentDAO{
 		    $this->_VideoComment->setCommentID ( $row['CommentID']);
 		    $this->_VideoComment->setVideoID( $row['VideoID'] );
 		    $this->_VideoComment->setComment( $row['Comment'] );
-		    $this->_VideoComment->setCreatorID( $row['CreatorID'] );
-		    $this->_VideoComment->setIsReply($row['IsReply']);
-		    $this->_VideoComment->setTopCommentID($row['TopCommentID']);
+		    $this->_VideoComment->setCreator( $row['CreatorID'] );
+		    $this->_VideoComment->setCommentTop($row['CommentIDTop']);
 
 
 		    $VideoCommentList[]=$this->_VideoComment;

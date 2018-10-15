@@ -11,9 +11,9 @@ if(isset($_POST['save']))
 {
 	 $VideoComment = new VideoComment();	
 	 $VideoComment->setCommentID(Util::getGUID());
-     $VideoComment->setComment($_DB->secureInput($_POST['txtComment']));
-     $VideoComment->setCreatorID($_DB->secureInput($_POST['id']));
-     $VideoComment->setTopCommentID('0');
+     $VideoComment->setComment($_DB->secureInput($_POST['txtAns']));
+     $VideoComment->setVideoID($_DB->secureInput($_POST['txtvideo']));
+     
 	 $_VideoCommentBAO->createVideoComment($VideoComment);		 
 }
 
@@ -26,7 +26,7 @@ if(isset($_GET['del']))
 	$VideoComment->setCommentID($_GET['del']);	
 	$_VideoCommentBAO->deleteVideoComment($VideoComment); //reading the VideoComment object from the result object
 
-	header("Location:".PageUtil::$VIDEO_Comment);
+	header("Location:".PageUtil::$VIDEO_COMMENT);
 }
 
 /* reading an existing VideoComment information */
@@ -47,7 +47,7 @@ if(isset($_POST['update']))
 	
 	$_VideoCommentBAO->updateVideoComment($VideoComment);
 
-	header("Location:".PageUtil::$VIDEO_Comment);
+	header("Location:".PageUtil::$VIDEO_COMMENT);
 }
 
 

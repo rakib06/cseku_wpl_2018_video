@@ -80,7 +80,6 @@ Class VideoCommentBAO{
 
 	}
 
-	
 	public function readvideo($Video){
 
 
