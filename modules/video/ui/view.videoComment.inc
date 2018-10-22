@@ -236,7 +236,10 @@ function myFunction() {
 					//calss.common.forum.inc er last a ase  
 					?>
 					<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
+					<br/>
 					<button type="button" onclick="myFunction(this)" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button> 
+
+					
 
 				</div>
 
@@ -266,6 +269,7 @@ function myFunction() {
 				// var_dump($row);
 				echo ($row->getComment());
 				?>
+			</br>
 				
 				</div>
 					<?php
