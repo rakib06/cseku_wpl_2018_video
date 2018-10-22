@@ -250,7 +250,9 @@ function myFunction() {
 					?>
 					<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
 					<button type="button" onclick="myFunction(this)" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button> 
+
 				</div>
+
 				<?php
 				$Res = $_VideoCommentBAO->readVideoReply($Video->getCommentID())->getResultObject();
 				// var_dump($Res);
@@ -260,7 +262,7 @@ function myFunction() {
 					if ($Result_crid->getIsSuccess() ) {
 					$crtr = $Result_crid->getResultObject();
 
-				echo $crtr->getFirstName().' '.$crtr->getLastName().'';
+				echo '     '.$crtr->getFirstName().' '.$crtr->getLastName().'';
 							    			} 
 
 					//echo ($row->getCreatorID());

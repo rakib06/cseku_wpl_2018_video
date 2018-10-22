@@ -65,7 +65,7 @@ Class VideoCommentDAO{
 				VALUES('$VideoCommentID','$VideoComment2','$CreatorID','$VideoID','$CommentIDTop')";
 
 		//echo $SQL;
-		var_dump($SQL);
+		//var_dump($SQL);
 
 		$SQL = $this->_DB->doQuery($SQL);		
 		
