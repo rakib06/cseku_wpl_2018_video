@@ -15,6 +15,8 @@ Class VideoCommentDAO{
 
 	}
 
+
+
 	// get all the VideoComments from the database using the database query
 	public function getAllVideoComments(){
 

@@ -1,6 +1,7 @@
 <?php
 
 include_once 'blade/view.VideoComment.blade.inc';
+include_once 'blade/view.videosearch.blade.inc';
 include_once COMMON.'class.common.inc';
 include_once COMMON.'class.common.video.inc';
 ?>
@@ -67,37 +68,19 @@ include_once COMMON.'class.common.video.inc';
 
 			<!--playlis div start-->
 				<div class="col-md-4" style = "max-width: 500px;height:500px;position: relative;">
-					<div class="well well-sm" style ="max-width: 600px;height:50px;" >
-          	<h7 class="my-3" >Playlist </h7>
+					<div class="well well-sm" style ="max-width: 600px;height:50px;color: red" >
+          	<a href="video_search.php" onclick="return ; " >Playlist </a>
           			 </div>
           		<div class="col-md-4" style = "min-width: 500px ; max-width : 500px;height:500px;position: relative; overflow-x: hidden">	 
 
           		 <ul>	 	
           			 		
-            <iframe width="144" height="100"
+            <!-- <iframe width="144" height="100"
 						src="https://www.youtube.com/embed/0IAPZzGSbME">
-					</iframe>
-			<h6>  Introduction to Algorithms  </h6>
+					</iframe> -->
+			<h6>    </h6>
 				 
-            <iframe width="144" height="100"
-						src="https://www.youtube.com/embed/-JTq1BFBwmo">
-					</iframe>
-					<h6>  Priori Analysis and Posteriori Testing</h6>
-
-				
-            <iframe width="144" height="100"
-						src="https://www.youtube.com/embed/FbYzBWdhMb0">
-					</iframe>
-					<h6> Characteristics of Algorithm </h6>
-											<iframe width="144" height="100"
-						src="https://www.youtube.com/embed/1U3Uwct45IY">
-					</iframe>
-					<h6> Frequency Count Method </h6>
-					
-				<iframe width="144" height="100"
-						src="https://www.youtube.com/embed/9TlHvipP5yA">
-					</iframe>
-				<h6>  Time Complexity #1</h6>
+            
 
 				
 				

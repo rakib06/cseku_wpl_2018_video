@@ -14,6 +14,8 @@ Class VideoCommentBAO{
 
 	}
 
+
+	
 	//get all Terms value
 	public function getAllVideoComments(){
 

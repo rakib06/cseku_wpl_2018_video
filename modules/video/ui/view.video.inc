@@ -55,15 +55,15 @@ include_once COMMON.'class.common.video.inc';
 					value="<?php if(isset($_GET['edit'])) echo $getROW->getTag();  ?>" />
 				</div>
 				</div>
-				<div class="form-group">
-              	<label class="control-label col-sm-4" for="txtembed">Is Embedded:</label>
+			<!-- 	<div class="form-group">
+              	<label type="hidden" class="control-label col-sm-4" for="txtembed">Is Embedded:</label>
               	<div class="col-sm-1">  
 						<select name="txtembed">
 							<option>0</option>
 							<option>1</option>
 						</select>
 				</div>
-				</div>
+				</div> -->
 		        <div class="form-group">        
 	              <div class="col-sm-offset-4 col-sm-4">					
 
@@ -92,8 +92,12 @@ include_once COMMON.'class.common.video.inc';
 	<table class="table table-bordered">
 	<tr>
 		<th>Video Title</th>
-	</tr>
+		<th>Watch</th>
+		<th>Edit</th>
+		<th>Delete</th>
 
+	</tr>
+	
 	<?php
 	
 	$Result = $_VideoBAO->getAllVideos();

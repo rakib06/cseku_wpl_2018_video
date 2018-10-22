@@ -15,7 +15,7 @@ if(isset($_POST['save']))
      $Video->setTitle($_DB->secureInput($_POST['txtName']));
      $Video->setDescription($_DB->secureInput($_POST['txtdes']));
      $Video->setLink($_DB->secureInput($_POST['txtlink']));
-     $Video->setIsEmbed($_DB->secureInput($_POST['txtembed']));
+     $Video->setIsEmbed('0');
      $Video->setTag($_DB->secureInput($_POST['txttag']));
 	 $_VideoBAO->createVideo($Video);		 
 }

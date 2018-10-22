@@ -53,7 +53,7 @@ Class VideoDAO{
 
 		$VideoList = array();
 
-		$this->_DB->doQuery("SELECT * FROM vtms_video WHERE TagID like '%$tag%'");
+		$this->_DB->doQuery("SELECT * FROM vtms_video WHERE TagID like '%$tag%' OR Title like '%$tag%' ");
 
 		$rows = $this->_DB->getAllRows();
 
