@@ -32,8 +32,8 @@ Class VideoCommentDAO{
 		    $this->_VideoComment->setComment( $row['Comment'] );
 		    $this->_VideoComment->setCreatorID( $row['CreatorID'] );
 		    $this->_VideoComment->setVideo( $row['VideoID'] );
-		    $this->_VideoComment->setIsReply($row['IsReply']);
-		    $this->_VideoComment->setTopCommentID($row['TopCommentID']);
+		    
+		    $this->_VideoComment->setCommentIDTop($row['CommentIDTop']);
 
 
 		    $VideoCommentList[]=$this->_VideoComment;
@@ -52,21 +52,20 @@ Class VideoCommentDAO{
 
 	//create VideoComment funtion with the VideoComment object
 	public function createVideoComment($VideoComment){
-
+		// var_dump($VideoComment);
 		$VideoCommentID=$VideoComment->getCommentID();
 		
-		$VideoComment=$VideoComment->getComment();
+		$VideoComment2=$VideoComment->getComment();
 		$CreatorID=$VideoComment->getCreatorID();
 		$VideoID=$VideoComment->getVideoID();
-		$IsReply=$VideoComment->getIsReply();
-		$TopCommentID=$VideoComment->getTopCommentID();
 		
-		$Creator=$_SESSION["globalUser"]->getID ();
+		$CommentIDTop=$VideoComment->getCommentIDTop();
 
-		$SQL = "INSERT INTO vtms_video_comment(CommentID,Comment,CreatorID,VideoID,IsReply,TopCommentID) 
-				VALUES('$VideoCommentID','$VideoComment','$CreatorID','$VideoID','$IsReply','$TopCommentID')";
+		$SQL = "INSERT INTO vtms_video_comment(CommentID,Comment,CreatorID,VideoID,CommentIDTop) 
+				VALUES('$VideoCommentID','$VideoComment2','$CreatorID','$VideoID','$CommentIDTop')";
 
 		//echo $SQL;
+		var_dump($SQL);
 
 		$SQL = $this->_DB->doQuery($SQL);		
 		
@@ -133,11 +132,11 @@ Class VideoCommentDAO{
 
 	//read an VideoComment object based on its id form VideoComment object
 	public function readVideoComment($video){
-		
+		$i='0';
 		
 		$VideoCommentList = array();
 
-		$this->_DB->doQuery("SELECT * FROM vtms_video_comment WHERE VideoID = '".$video."'");
+		$this->_DB->doQuery("SELECT * FROM vtms_video_comment WHERE VideoID = '".$video."' AND CommentIDTop = '".$i."' ");
 
 		$rows = $this->_DB->getAllRows();
 
@@ -149,13 +148,48 @@ Class VideoCommentDAO{
 		    $this->_VideoComment->setVideoID( $row['VideoID'] );
 		    $this->_VideoComment->setComment( $row['Comment'] );
 		    $this->_VideoComment->setCreatorID( $row['CreatorID'] );
-		    $this->_VideoComment->setIsReply($row['IsReply']);
-		    $this->_VideoComment->setTopCommentID($row['TopCommentID']);
+		   
+		    $this->_VideoComment->setCommentIDTop($row['CommentIDTop']);
 
 
 		    $VideoCommentList[]=$this->_VideoComment;
    
 		}
+
+
+$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($VideoCommentList);
+
+		return $Result;
+	}
+//read an Reply object based on its id form VideoComment object
+	public function readVideoReply($Video){
+		$video = $Video->getVideoID();
+		$comment = $Video->getCommentIDTop();
+		
+		$VideoCommentList = array();
+
+		$this->_DB->doQuery("SELECT * FROM vtms_video_comment WHERE VideoID = '".$video."' AND CommentIDTop = '".$comment."' ");
+
+		$rows = $this->_DB->getAllRows();
+
+		for($i = 0; $i < sizeof($rows); $i++) {
+			$row = $rows[$i];
+			$this->_VideoComment = new VideoComment();
+
+		    $this->_VideoComment->setCommentID ( $row['CommentID']);
+		    $this->_VideoComment->setVideoID( $row['VideoID'] );
+		    $this->_VideoComment->setComment( $row['Comment'] );
+		    $this->_VideoComment->setCreatorID( $row['CreatorID'] );
+		   
+		    $this->_VideoComment->setCommentIDTop($row['CommentIDTop']);
+
+
+		    $VideoCommentList[]=$this->_VideoComment;
+   
+		}
+
 
 		//todo: LOG util with level of log
 

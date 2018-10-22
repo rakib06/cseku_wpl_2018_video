@@ -80,6 +80,21 @@ Class VideoCommentBAO{
 
 	}
 
+
+	public function readVideoReply($VideoComment){
+
+
+		$Result = new Result();	
+		$Result = $this->_VideoCommentDAO->readVideoReply($VideoComment);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in VideoCommentDAO.readVideoComment()");		
+
+		return $Result;
+
+
+	}
+
 	
 	public function readvideo($Video){
 

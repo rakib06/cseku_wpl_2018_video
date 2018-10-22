@@ -147,19 +147,22 @@ include_once COMMON.'class.common.video.inc';
 					value="<?php if(isset($_GET['edit'])) echo $getROW->getVideo();  ?>" >
 					</textarea>
 					<input type="hidden" name="CreatorID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCreatorID();  ?>" />
+					<input type="hidden" name="videoID" value="<?php if(isset($_GET['edit'])) echo $getROW->getVideoID();  ?>" />
 					</br>
 					<input class="btn btn-success btn-sm"  type="submit" id="savebutton"  name="save" value="Comment">
 				</div>
 
-
+<!-- This is for fetch reply -->
 				<div id = "reply" class= "panel-heading" style="display: none;" >Add a public reply</div>
 				<div id =reply_txt style="display: none;" class="panel-body">
-					<textarea class="form-control" name="txtComment" 
+					<textarea class="form-control" name="txtReply" 
 					value="<?php if(isset($_GET['edit'])) echo $getROW->getVideo();  ?>" >
 					</textarea>
-					<input type="hidden" name="CreatorID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCreatorID();  ?>" />
+					<input type="hidden" name="Reply_CreatorID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCreatorID();  ?>" />
+					<input type="hidden" name="Reply_videoID" value="<?php if(isset($_GET['edit'])) echo $getROW->getVideoID();  ?>" />
+					<input type="hidden" id="CommentID" name="CommentID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCommentID();  ?>" />
 					</br>
-					<input class="btn btn-success btn-sm"  type="submit" id="replysavebutton"  name="save" value="Reply">
+					<input class="btn btn-success btn-sm"  type="submit" id="replysavebutton"  name="save2" value="Reply">
 				</div>
 			</form>
 		</div> <?php //1st cmnt post box end ?>
@@ -178,6 +181,7 @@ function myFunction() {
         y.style.display="block";
         c1.style.display = "none";
         c2.style.display="none";
+        document.getElementById("CommentID").value = document.getElementById("comment_id").value;
     } else {
         x.style.display = "none";
         y.style.display = "none";
@@ -231,23 +235,108 @@ function myFunction() {
 		<?php 
 			$id= $Video->getCreatorID();
 			$Result5 = $_VideoCommentBAO->readCreator($id);
-			if ($Result5->getIsSuccess()) {
+			
+				
+						
+			if ($Result5->getIsSuccess() ) {
 				$user = $Result5->getResultObject();
+
 				echo $user->getFirstName().' '.$user->getLastName().'';
 							    			} 
 		?>		</div>
 				<div style ="position: relative; left: 10px; width:1000px;"  class="panel panel-danger">
-					<?php echo $Video->getComment();
+					<?php
+						
+							echo $Video->getComment();
+						
+						
+
 					//calss.common.forum.inc er last a ase  
 					?>
+					<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
 					<button type="button" onclick="myFunction()" class="btn btn-link">Reply</button> 
 				</div>
 
-				<div style ="position: relative; left: 50px; width:500px;font-weight:bold ;"  class="panel-heading">Md Rakibul Hasan Molla</div> 
-									<div style ="position: relative; left: 50px; width:970px;"  class="panel panel-danger">Thank you <button type="button" onclick="myFunction()" class="btn btn-link">Reply</button> </div> 
-										
-									<div style ="position: relative; left: 100px; width:500px;font-weight:bold ;"  class="panel-heading">Tamim Iqbal </div> 
-									<div style ="position: relative; left: 100px; width:970px;"  class="panel panel-danger">This is a test reply  <button type="button" onclick="myFunction()" class="btn btn-link">Reply</button></div>
+					
+<!-- TRy to reply  -->
+
+
+
+
+		<?php 
+			//all reply  fetch 
+			
+			//echo $Video2;	
+			$Result2 = $_VideoCommentBAO->readVideoReply($Video2,$Video->getCommentID());
+			//if DAO access is successful to load all the comments then show them one by one
+			if($Result2->getIsSuccess()){
+				$VideoList2 = $Result2->getResultObject();
+						for($i1 = 0; $i1 < sizeof($VideoList2); $i1++) {
+							$VideoR = $VideoList2[$i];
+							if($i1%2==0){
+		?> 
+		<div class="panel panel-danger" style="border-style:solid;background-color: white">
+		<?php
+										}
+		else{ 
+		?>
+			<div class="panel panel-danger" style="border-style:solid;background-color: white">
+
+		<?php 
+		//upore div er oita 2 bar silo , 1bar kore disi
+			}
+		?>								
+				<div style ="position: relative; left: 50px; width:500px;font-weight:bold ;"  class="panel-heading">						
+
+		<?php 
+			$id1= $VideoR->getCreatorID();
+			$Result6 = $_VideoCommentBAO->readCreator($id1);
+			
+				
+						
+			if ($Result6->getIsSuccess() ) {
+				$user1 = $Result5->getResultObject();
+
+				echo $user1->getFirstName().' '.$user1->getLastName().'';
+							    			} 
+		?>		</div>
+				<div style ="position: relative; left: 50px; width:970px;"  class="panel panel-danger">
+					<?php
+						
+							echo $VideoR->getComment();
+						
+						
+
+					//calss.common.forum.inc er last a ase  
+					?>
+					<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
+					<button type="button" onclick="myFunction()" class="btn btn-link">Reply</button> 
+				</div>
+
+					
+								
+		
+						<?php		
+
+							} // reply  for loop end
+
+							} // reply sucess if end 
+							else
+							{
+								echo $Result->getResultObject();
+							}
+
+
+						
+								?>
+
+
+
+
+
+				
+
+<!-- END reply  -->									
 		
 						<?php		
 
@@ -265,14 +354,14 @@ function myFunction() {
 									 
 
 
-		</div> <?php //comment box er div ?>
+	<!-- 	  //comment box er div  -->
 
 
 
-		</div>
-</div>  <?php //panel body er div ?>
-
-</div> <?php //last panel er div ?> 
-
+		
+</div>  <!-- //panel body er div 
+ -->
+</div> <!-- //last panel er div ?> 
+ -->
 
 

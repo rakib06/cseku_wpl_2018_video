@@ -127,6 +127,7 @@ class Comment{
     public function getComment() {
         return $this->_Comment;
     }
+    
 
 
     public function setCreator ($Creator ) {
@@ -156,6 +157,48 @@ class Comment{
 
 
 }
+
+//reply 17-09
+
+class Reply{
+    private $_ReplyID
+    private $_CommentID;
+    private $_Reply;
+    private $_Creator;
+    public function setReplyID ($ReplyID ) {
+        $this->_ReplyID= $ReplyID;
+    }
+
+    public function getReplyID() {
+        return $this->_ReplyID;
+    }
+
+    public function setCommentID ($CommentID) {
+        $this->_CommentID= $CommentID;
+    }
+
+    public function getCommentID() {
+        return $this->_CommentID;
+    }
+
+    public function setReply ($Reply ) {
+        $this->_Reply= $Reply;
+    }
+
+    public function getReply() {
+        return $this->_Reply;
+    }
+    public function setCreator ($Creator ) {
+        $this->_Creator= $Creator;
+    }
+
+    public function getCreator() {
+        return $this->_Creator;
+    }
+    
+
+}
+
 
 
 ?>

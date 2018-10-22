@@ -9,14 +9,28 @@ $_DB = DBUtil::getInstance();
 /* saving a new VideoComment account*/
 if(isset($_POST['save']))
 {
-	 $VideoComment = new VideoComment();	
+	 $VideoComment = new VideoComment();
+	 $VideoComment->setVideoID($_GET['view']);
 	 $VideoComment->setCommentID(Util::getGUID());
      $VideoComment->setComment($_DB->secureInput($_POST['txtComment']));
-     $VideoComment->setCreatorID($_DB->secureInput($_POST['id']));
-     $VideoComment->setTopCommentID('0');
+     $VideoComment->setCreatorID($_DB->secureInput($_SESSION["globalUser"]->getID ()));
+     $VideoComment->setCommentIDTop('0');
+
 	 $_VideoCommentBAO->createVideoComment($VideoComment);		 
 }
 
+if(isset($_POST['save2']))
+{
+	 $VideoComment = new VideoComment();
+	 $VideoComment->setVideoID($_GET['view']);
+	 $VideoComment->setCommentID(Util::getGUID());
+     $VideoComment->setComment($_DB->secureInput($_POST['txtReply']));
+
+     $VideoComment->setCreatorID($_DB->secureInput($_SESSION["globalUser"]->getID ()));
+     $VideoComment->setCommentIDTop($_DB->secureInput($_POST['CommentID']));
+
+	 $_VideoCommentBAO->createVideoComment($VideoComment);		 
+}
 
 /* deleting an existing VideoComment */
 if(isset($_GET['del']))

@@ -97,7 +97,8 @@ class VideoComment{
     private $_Comment;
     private $_Creator;
     private $_VideoID;
-    private $_CommentTop;
+    
+    private $_CommentIDTop;
 
     public function setCommentID ( $CommentID ) {
         $this->_CommentID = $CommentID;
@@ -117,11 +118,11 @@ class VideoComment{
     }
 
 
-    public function setCreator ( $Creator ) {
+    public function setCreatorID ( $Creator ) {
         $this->_Creator = $Creator;
     }
 
-    public function getCreator () {
+    public function getCreatorID () {
         return $this->_Creator;
     }
 
@@ -134,15 +135,24 @@ class VideoComment{
         return $this->_VideoID;
     }
 
-    public function setCommentTop ( $CommentTop ) {
-        $this->_CommentTop = $CommentTop;
+    public function setIsReply ( $IsReply ) {
+        $this->_IsReply = $IsReply;
     }
 
-    public function getCommentTop () {
-        return $this->_CommentTop;
+    public function getIsReply () {
+        return $this->_IsReply;
+    }
+    public function setCommentIDTop ( $CommentIDTop ) {
+        $this->_CommentIDTop = $CommentIDTop;
+    }
+
+    public function getCommentIDTop () {
+        return $this->_CommentIDTop;
     }
 
 }
+
+
 
 class VideoTag{
     

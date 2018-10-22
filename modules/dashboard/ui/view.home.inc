@@ -11,7 +11,6 @@ include_once 'blade/view.home.blade.inc';
 <?php
 			if(isset($globalMenu)){
 				echo print_dashboard_body_tab($globalMenu);
-				//print_r($globalMenu);
 			}
 
 
