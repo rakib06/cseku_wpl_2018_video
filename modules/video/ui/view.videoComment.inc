@@ -171,6 +171,11 @@ include_once COMMON.'class.common.video.inc';
 
 
 <script>
+	$(function(){
+    $("button").click(function() {
+        document.getElementById("CommentID").value = $(this).val();
+    });
+});
 function myFunction() {
     var x = document.getElementById("reply");
     var y=document.getElementById("reply_txt");
@@ -181,7 +186,7 @@ function myFunction() {
         y.style.display="block";
         c1.style.display = "none";
         c2.style.display="none";
-        document.getElementById("CommentID").value = document.getElementById("comment_id").value;
+        
     } else {
         x.style.display = "none";
         y.style.display = "none";
@@ -212,24 +217,14 @@ function myFunction() {
 			$Video2 = substr($id, -38);
 			//echo $Video2;	
 			$Result1 = $_VideoCommentBAO->readVideoComment($Video2);
+			
 			//if DAO access is successful to load all the comments then show them one by one
 			if($Result1->getIsSuccess()){
-				$VideoList = $Result1->getResultObject();
-						for($i = 0; $i < sizeof($VideoList); $i++) {
-							$Video = $VideoList[$i];
-							if($i%2==0){
-		?> 
-		<div class="panel panel-danger" style="border-style:solid;background-color: white">
-		<?php
-										}
-		else{ 
-		?>
-			<div class="panel panel-danger" style="border-style:solid;background-color: white">
-
-		<?php 
-		//upore div er oita 2 bar silo , 1bar kore disi
-			}
-		?>								
+			$VideoList = $Result1->getResultObject();
+			// var_dump(sizeof($VideoList));
+			for($i = 0; $i < sizeof($VideoList); $i++) {
+				$Video = $VideoList[$i];
+?>											
 				<div class="panel-heading" style="font-size:12px;font-weight:bold ;position: relative; left: 0px; width:545px;">						
 
 		<?php 
@@ -254,99 +249,33 @@ function myFunction() {
 					//calss.common.forum.inc er last a ase  
 					?>
 					<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
-					<button type="button" onclick="myFunction()" class="btn btn-link">Reply</button> 
+					<button type="button" onclick="myFunction(this)" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button> 
 				</div>
-
-					
-<!-- TRy to reply  -->
-
-
-
-
-		<?php 
-			//all reply  fetch 
-			
-			//echo $Video2;	
-			$Result2 = $_VideoCommentBAO->readVideoReply($Video2,$Video->getCommentID());
-			//if DAO access is successful to load all the comments then show them one by one
-			if($Result2->getIsSuccess()){
-				$VideoList2 = $Result2->getResultObject();
-						for($i1 = 0; $i1 < sizeof($VideoList2); $i1++) {
-							$VideoR = $VideoList2[$i];
-							if($i1%2==0){
-		?> 
-		<div class="panel panel-danger" style="border-style:solid;background-color: white">
-		<?php
-										}
-		else{ 
-		?>
-			<div class="panel panel-danger" style="border-style:solid;background-color: white">
-
-		<?php 
-		//upore div er oita 2 bar silo , 1bar kore disi
-			}
-		?>								
-				<div style ="position: relative; left: 50px; width:500px;font-weight:bold ;"  class="panel-heading">						
-
-		<?php 
-			$id1= $VideoR->getCreatorID();
-			$Result6 = $_VideoCommentBAO->readCreator($id1);
-			
-				
-						
-			if ($Result6->getIsSuccess() ) {
-				$user1 = $Result5->getResultObject();
-
-				echo $user1->getFirstName().' '.$user1->getLastName().'';
-							    			} 
-		?>		</div>
-				<div style ="position: relative; left: 50px; width:970px;"  class="panel panel-danger">
-					<?php
-						
-							echo $VideoR->getComment();
-						
-						
-
-					//calss.common.forum.inc er last a ase  
+				<?php
+				$Res = $_VideoCommentBAO->readVideoReply($Video->getCommentID())->getResultObject();
+				// var_dump($Res);
+				foreach ($Res as $row) {
+					echo ($row->getCreatorID());
 					?>
-					<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
-					<button type="button" onclick="myFunction()" class="btn btn-link">Reply</button> 
-				</div>
 
-					
-								
-		
-						<?php		
-
-							} // reply  for loop end
-
-							} // reply sucess if end 
-							else
-							{
-								echo $Result->getResultObject();
-							}
-
-
-						
-								?>
-
-
-
-
-
+			<div style ="position: relative; left: 50px; width:1000px;"  class="panel panel-danger">
+				<?php
+				// var_dump($row);
+				echo ($row->getComment());
+				?>
 				
-
-<!-- END reply  -->									
-		
-						<?php		
-
-							} // comment for loop end
-
-							} // comment sucess if end 
-							else
-							{
-								echo $Result->getResultObject();
-							}
+				</div>
+					<?php
+				}
+				?>
+	
+<?php
+}
+}
+	else
+	{
+		echo $Result->getResultObject();
+	}
 
 
 						

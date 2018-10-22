@@ -165,12 +165,10 @@ $Result = new Result();
 	}
 //read an Reply object based on its id form VideoComment object
 	public function readVideoReply($Video){
-		$video = $Video->getVideoID();
-		$comment = $Video->getCommentIDTop();
 		
 		$VideoCommentList = array();
 
-		$this->_DB->doQuery("SELECT * FROM vtms_video_comment WHERE VideoID = '".$video."' AND CommentIDTop = '".$comment."' ");
+		$this->_DB->doQuery("SELECT * FROM vtms_video_comment WHERE CommentIDTop = '".$Video."' ");
 
 		$rows = $this->_DB->getAllRows();
 
