@@ -255,7 +255,15 @@ function myFunction() {
 				$Res = $_VideoCommentBAO->readVideoReply($Video->getCommentID())->getResultObject();
 				// var_dump($Res);
 				foreach ($Res as $row) {
-					echo ($row->getCreatorID());
+					$crid=$row->getCreatorID();
+					$Result_crid = $_VideoCommentBAO->readCreator($crid);
+					if ($Result_crid->getIsSuccess() ) {
+					$crtr = $Result_crid->getResultObject();
+
+				echo $crtr->getFirstName().' '.$crtr->getLastName().'';
+							    			} 
+
+					//echo ($row->getCreatorID());
 					?>
 
 			<div style ="position: relative; left: 50px; width:1000px;"  class="panel panel-danger">
