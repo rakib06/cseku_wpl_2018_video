@@ -225,7 +225,8 @@ function myFunction() {
 			for($i = 0; $i < sizeof($VideoList); $i++) {
 				$Video = $VideoList[$i];
 ?>											
-				<div class="panel-heading" style="font-size:12px;font-weight:bold ;position: relative; left: 0px; width:545px;">						
+				<div class="panel-heading" style="font-size:12px;font-weight:bold ;position: relative; left: 0px; width:545px;">	
+
 
 		<?php 
 			$id= $Video->getCreatorID();
@@ -235,11 +236,14 @@ function myFunction() {
 						
 			if ($Result5->getIsSuccess() ) {
 				$user = $Result5->getResultObject();
-
+?>
+	<div class="panel panel-danger"style ="position: relative; left: 10px; width:1090px;"> <?php // rc div 1 ?>
+      		<div class="panel-heading">
+		<?php
 				echo $user->getFirstName().' '.$user->getLastName().'';
 							    			} 
-		?>		</div>
-				<div style ="position: relative; left: 10px; width:1000px;"  class="panel panel-danger">
+		?>		</div> </div>
+				<div style ="position: relative; left: 10px; width:1090px;"  class="panel panel-danger">
 					<?php
 						
 							echo $Video->getComment();
@@ -262,13 +266,19 @@ function myFunction() {
 					if ($Result_crid->getIsSuccess() ) {
 					$crtr = $Result_crid->getResultObject();
 
+?>
+	<div class="panel panel-danger"style ="position: relative; left: 100px; width:1000px;" > <?php // rc div 1 ?>
+      		<div class="panel-heading">
+		<?php
+
 				echo '     '.$crtr->getFirstName().' '.$crtr->getLastName().'';
 							    			} 
 
 					//echo ($row->getCreatorID());
 					?>
+				</div></div>
 
-			<div style ="position: relative; left: 50px; width:1000px;"  class="panel panel-danger">
+			<div style ="position: relative; left: 100px; width:1000px;"  class="panel panel-danger">
 				<?php
 				// var_dump($row);
 				echo ($row->getComment());
