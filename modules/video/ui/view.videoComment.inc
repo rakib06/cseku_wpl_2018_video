@@ -10,6 +10,7 @@ include_once COMMON.'class.common.video.inc';
 	
 
 	<div class="container">
+	</br>
 			<div class="well well-sm">
       <!-- Portfolio Item Heading -->
       <h7 class="my-4">Video Viewer
@@ -44,10 +45,11 @@ include_once COMMON.'class.common.video.inc';
 				$Vedio = $Result1->getResultObject();
 			?> 
 			<div class= "well well-sm" >
-				<h5 ><?php echo "Creator Email : ".$Vedio->getCreatorID(); ?></h5>
-              	<!-- <h5 ><?php echo "Video Title : ".$Vedio->getTitle(); ?></h5> -->
+				
+              	 <h5 ><?php echo "Video Title : ".$Vedio->getTitle(); ?></h5> 
+              	<!--  <h5 ><?php echo "Creator Email : ".$Vedio->getCreatorID(); ?></h5>
 
-
+ -->
 			</div>
 			
 			
