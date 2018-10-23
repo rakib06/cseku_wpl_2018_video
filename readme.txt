@@ -2,9 +2,9 @@ Digital University
 
 Copyright of this content is reserved by the founders, various contributors and the KU CSE discipline.
 
-version 1.0
+version 2018
 
-Founder, Framework and Architecture: Dr. KAZI MASUDUL ALAM, Professor, CSE Discipline, Khulna University
+Founder, Framework and Architecture: Dr. KAZI MASUDUL ALAM, Associate  Professor, CSE Discipline, Khulna University
 
 Development Contributors:
 --------------------------------
