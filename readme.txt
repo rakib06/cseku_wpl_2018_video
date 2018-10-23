@@ -4,10 +4,17 @@ Copyright of this content is reserved by the founders, various contributors and 
 
 version 1.0
 
-Founder, Framework and Architecture: Dr. KAZI MASUDUL ALAM, Assistant Professor, CSE Discipline, Khulna University
+Founder, Framework and Architecture: Dr. KAZI MASUDUL ALAM, Professor, CSE Discipline, Khulna University
 
 Development Contributors:
 --------------------------------
+
+Video Comments:
+--------------------
+Rokib 160206
+Mahmud 150239
+Swagato 160232
+
 
 Events Calendar: 
 -------------------------
@@ -59,11 +66,7 @@ hasib	140228
 mushfiq	140237
 
 
-Video Comments:
---------------------
-sohel	130209
-prince	130219
-koushik	130221
+
 
 
 Attendance:
