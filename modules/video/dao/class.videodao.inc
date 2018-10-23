@@ -33,6 +33,10 @@ Class VideoDAO{
 		    $this->_Video->setDescription( $row['Description'] );
 		    $this->_Video->setLink( $row['Link'] );
 		    //$this->_Video->setEmbedLink( $row['EmbedLink'] );
+		  $this->_Video->setCreatorID($row['CreatorID']);
+		$this->_Video->setCreationDate($row['CreationDate']);
+
+
 		    $this->_Video->setIsEmbed( $row['IsEmbed'] );
 		    $this->_Video->setTag( $row['TagID'] );
 		    $VideoList[]=$this->_Video;
@@ -61,6 +65,8 @@ Class VideoDAO{
 		//$link2= substr($link,32);
 		//$Link=$front.$link2.$back;
 		//$EmbedLink=$Video->getEmbedLink();
+
+
 		$isEmbed=$Video->getIsEmbed();
 		$Tag=$Video->getTag();
 		
@@ -101,6 +107,9 @@ Class VideoDAO{
 		//$link = $row['Link'] ;
 		//$link2= substr($link,32);
 		//$Link=$front.$link2.$back;
+		$this->_Video->setCreatorID($row['CreatorID']);
+		$this->_Video->setCreationDate($row['CreationDate']);
+
 
 	    $this->_Video->setLink($row['Link']);
 	    $this->_Video->setIsEmbed( $row['IsEmbed'] );

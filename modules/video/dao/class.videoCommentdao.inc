@@ -121,7 +121,8 @@ Class VideoCommentDAO{
 	    $this->_Video->setLink( $row['Link'] );
 	    $this->_Video->setIsEmbed( $row['IsEmbed'] );
 	    $this->_Video->setTag( $row['TagID'] );
-
+	    $this->_Video->setCreatorID($row['CreatorID']);
+		$this->_Video->setCreationDate($row['CreationDate']);
 
 
 

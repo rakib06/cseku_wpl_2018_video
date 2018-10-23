@@ -10,7 +10,6 @@ include_once COMMON.'class.common.video.inc';
 	
 
 	<div class="container">
-	</br>
 			<div class="well well-sm">
       <!-- Portfolio Item Heading -->
       <h7 class="my-4">Video Viewer
@@ -44,13 +43,7 @@ include_once COMMON.'class.common.video.inc';
 				if($Result1->getIsSuccess()){ // 1st if start 
 				$Vedio = $Result1->getResultObject();
 			?> 
-			<div class= "well well-sm" >
-				
-              	 <h5 ><?php echo "Video Title : ".$Vedio->getTitle(); ?></h5> 
-              	<!--  <h5 ><?php echo "Creator Email : ".$Vedio->getCreatorID(); ?></h5>
-
- -->
-			</div>
+			
 			
 			
 
@@ -73,6 +66,42 @@ include_once COMMON.'class.common.video.inc';
 				}
 			?>
 		</br>
+		<div class= "well well-lg" >
+				
+              	 <h5 style="color: red;font-size: large; font-family: " ><?php echo "Video Title : ".$Vedio->getTitle(); ?></h5> 
+
+              	 <h5 style="color:green "><?php echo "Description : ".$Vedio->getDescription(); ?></h5> 
+
+
+
+
+<?php 
+			$id1= $Vedio->getCreatorID();
+			$Result55 = $_VideoCommentBAO->readCreator($id1);
+			
+				
+						
+			if ($Result55->getIsSuccess() ) {
+				$user1 = $Result55->getResultObject();
+?>
+
+      		<h5 style="color: red;font-size: medium;" ><?php echo "Creator Name : ".$user1->getFirstName().' '.$user1->getLastName().'';
+							    			} 
+		?>	</h5>
+
+
+
+
+              	  <h5 style="color: purple;font-size: medium;" ><?php echo "Creator's Email : ".$Vedio->getCreatorID(); ?></h5> 
+
+
+              	   <h5 style="color:purple" ><?php echo "Creation Date : ".$Vedio->getCreationDate(); ?></h5> 
+              	 <!--  <h5  ><?php echo "Link : ".$Vedio->getLink(); ?></h5> -->
+              	 
+              	
+
+
+			</div>
 				</div>
 			</div>
 

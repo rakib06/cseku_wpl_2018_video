@@ -31,6 +31,14 @@ class Video{
     }
 
 
+    public function setCreatorID ( $Creator ) {
+        $this->_Creator = $Creator;
+    }
+
+    public function getCreatorID () {
+        return $this->_Creator;
+    }
+    
     public function setDescription ( $Description) {
         $this->_Description = $Description;
     }
@@ -74,13 +82,7 @@ class Video{
         return $this->_CreationDate;
     }
 
-    public function setCreatorID ( $Creator ) {
-        $this->_Creator = $Creator;
-    }
-
-    public function getCreatorID () {
-        return $this->_Creator;
-    }
+    
     public function setTag( $Tag ) {
         $this->_Tag = $Tag;
     }
