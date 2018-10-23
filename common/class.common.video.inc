@@ -10,7 +10,7 @@ class Video{
     private $_IsEmbed;
     private $_EmbedLink;
     private $_CreationDate;
-    private $_Creator;
+    private $_CreatorID;
     private $_Tag;
 
     public function setID ( $ID ) {
@@ -74,11 +74,11 @@ class Video{
         return $this->_CreationDate;
     }
 
-    public function setCreator( $Creator ) {
-        $this->_Creator = $Creator;
+    public function setCreatorID( $CreatorID ) {
+        $this->_Creator = $CreatorID;
     }
 
-    public function getCreator() {
+    public function getCreatorID() {
         return $this->_Creator;
     }
     public function setTag( $Tag ) {

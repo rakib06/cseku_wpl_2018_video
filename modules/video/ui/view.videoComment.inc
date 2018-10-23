@@ -44,15 +44,23 @@ include_once COMMON.'class.common.video.inc';
 				$Vedio = $Result1->getResultObject();
 			?> 
 			<div class= "well well-sm" >
-              	<h5 ><?php echo "Video Title : ".$Vedio->getTitle(); ?></h5>
+				<h5 ><?php echo "Creator Email : ".$Vedio->getCreatorID(); ?></h5>
+              	<!-- <h5 ><?php echo "Video Title : ".$Vedio->getTitle(); ?></h5> -->
+
+
 			</div>
+			
+			
+
 			<div>
 				<?php
 					$front = '<iframe width="750" height="500" src="https://www.youtube.com/embed/' ;
 					$back = '" frameborder="0" allowfullscreen></iframe>';
 					$link = $Vedio->getLink();
+					$link_ID = substr($link, -11);
+
 					//$link2= substr($link);
-					$Link=$front.$link.$back;
+					$Link=$front.$link_ID.$back;
 					echo $Link; 
 				?>
 			</div>
@@ -69,7 +77,33 @@ include_once COMMON.'class.common.video.inc';
 			<!--playlis div start-->
 				<div class="col-md-4" style = "max-width: 500px;height:500px;position: relative;">
 					<div class="well well-sm" style ="max-width: 600px;height:50px;color: red" >
-          	<a href="video_search.php" onclick="return ; " >Playlist </a>
+          	<a href="video_search.php" onclick="return ; " >Activities </a>
+          			 </div>
+          		<div class="col-md-4" style = "min-width: 500px ; max-width : 500px;height:500px;position: relative; overflow-x: hidden">	 
+
+          		 <ul>	 	
+          			 		
+            <!-- <iframe width="144" height="100"
+						src="https://www.youtube.com/embed/0IAPZzGSbME">
+					</iframe> -->
+			<h6>    </h6>
+				 
+            
+
+				
+				
+           </ul>
+
+
+
+<!--upload div start-->
+				<div class="col-md-4" style = "max-width: 500px;height:500px;position: relative;">
+
+					<div class="well well-sm" style ="max-width: 600px;height:50px;color: red" >
+          	<a href="video_search.php" onclick="return ; " >Watch Playlist </a>
+          			 </div>
+					<div class="well well-sm" style ="max-width: 600px;height:50px;color: red" >
+          	<a href="video.php" onclick="return ; " >Upload a video </a>
           			 </div>
           		<div class="col-md-4" style = "min-width: 500px ; max-width : 500px;height:500px;position: relative; overflow-x: hidden">	 
 
@@ -91,14 +125,24 @@ include_once COMMON.'class.common.video.inc';
 					 
 					
 
+		</div>  <!--upload div end -->
+
+					
+				</div>
+				
+					 
+					
+
 		</div>  <!--playlist div end -->
+
+
+		
 
 		</div> 
 
 
 
-
-
+       
 
 
 
@@ -135,7 +179,11 @@ include_once COMMON.'class.common.video.inc';
 					<input class="btn btn-success btn-sm"  type="submit" id="savebutton"  name="save" value="Comment">
 				</div>
 
-<!-- This is for fetch reply -->
+<!-- This is for reply box -->
+	<!-- extra	 -->		
+
+
+<!-- extra	 -->			
 				<div id = "reply" class= "panel-heading" style="display: none;" >Add a public reply</div>
 				<div id =reply_txt style="display: none;" class="panel-body">
 					<textarea class="form-control" name="txtReply" 
@@ -147,8 +195,15 @@ include_once COMMON.'class.common.video.inc';
 					</br>
 					<input class="btn btn-success btn-sm"  type="submit" id="replysavebutton"  name="save2" value="Reply">
 				</div>
+
+<!-- extra		 -->	
+
+   <!--  exrta	 -->
 			</form>
 		</div> <?php //1st cmnt post box end ?>
+
+
+
 
 
 
@@ -169,6 +224,7 @@ function myFunction() {
         y.style.display="block";
         c1.style.display = "none";
         c2.style.display="none";
+
         
     } else {
         x.style.display = "none";
@@ -237,7 +293,8 @@ function myFunction() {
 					?>
 					<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
 					<br/>
-					<button type="button" onclick="myFunction(this)" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button> 
+					<button type="button" onclick="myFunction(this)" href="#reply" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button> 
+
 
 					
 

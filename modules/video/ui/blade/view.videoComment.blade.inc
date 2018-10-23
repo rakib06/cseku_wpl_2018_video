@@ -31,6 +31,18 @@ if(isset($_POST['save2']))
 
 	 $_VideoCommentBAO->createVideoComment($VideoComment);		 
 }
+if(isset($_POST['save3']))
+{
+	 $VideoComment = new VideoComment();
+	 $VideoComment->setVideoID($_GET['view']);
+	 $VideoComment->setCommentID(Util::getGUID());
+     $VideoComment->setComment($_DB->secureInput($_POST['txtReply']));
+
+     $VideoComment->setCreatorID($_DB->secureInput($_SESSION["globalUser"]->getID ()));
+     $VideoComment->setCommentIDTop($_DB->secureInput($_POST['CommentID']));
+
+	 $_VideoCommentBAO->createVideoComment($VideoComment);		 
+}
 
 /* deleting an existing VideoComment */
 if(isset($_GET['del']))
