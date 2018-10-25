@@ -158,6 +158,32 @@ Class VideoDAO{
 
 	}
 
+	public function readCreator($CreatorID){
+
+		$SQL = "SELECT * FROM ums_user
+				WHERE ID ='".$CreatorID."'";
+		$SQL = $this->_DB->doQuery($SQL);
+
+		$row = $this->_DB->getTopRow();
+
+		$this->_useradd = new User();
+
+		$this->_useradd->setID ( $row['ID']);
+		$this->_useradd->setUniversityID( $row['UniversityID'] );
+		$this->_useradd->setEmail ( $row['Email']);
+		$this->_useradd->setPassword( $row['Password'] );
+		$this->_useradd->setFirstName ( $row['FirstName']);
+		$this->_useradd->setLastName( $row['LastName'] );
+		
+		
+	 	$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($this->_useradd);
+
+		return $Result;
+	}
+	
+
 }
 
 ////$_Log->log(LogUtil::$DEBUG," exit the class.videodao.inc");

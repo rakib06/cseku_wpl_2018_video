@@ -56,10 +56,14 @@ include_once COMMON.'class.common.video.inc';
 		    <tr>
 			    <td >
 			    <a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >
-			    <?php echo $Video->getTitle()."</br>"; 
-			    	  echo "Tag : ".$Video->getTag()."</br>"; 
-			    		echo "Creator : ".$Video->getCreatorID()."</br>"; 
-			    		echo "Creator : ".$Video->getCreationDate()."</br>"; 	
+			    <?php 
+			    		
+
+			    		echo $Video->getTitle()."</br>"; 
+			    	  	echo "Tag : ".$Video->getTag()."</br>"; 
+			    	  
+			    		echo "Creator Email : ".$Video->getCreatorID()."</br>"; 
+		    		echo "Creator : ".$Video->getCreationDate()."</br>"; 	
 
 			    		?>
 			    	

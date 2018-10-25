@@ -105,24 +105,29 @@ include_once COMMON.'class.common.video.inc';
 				</div>
 			</div>
 
+
+
+
 			<!--playlis div start-->
 				<div class="col-md-4" style = "max-width: 500px;height:500px;position: relative;">
+						<div id="form" >
+<form method = "post"class="form-inline mr-auto">
+  <input class="form-control mr-sm-2" name ="txtsearch" type="text" placeholder="Search" aria-label="Search"style="width: 350px;">
+  <i class="fa fa-search" aria-hidden="true"></i>
+  <button class="btn btn-outline-success btn-rounded btn-sm my-0" style="right:-50px;width: 100px;"type="submit" id="savebutton" name="search" value="search">Search</button>
+  
+</br></br></br>
+</form>
+
+	</div>
+
 					<div class="well well-sm" style ="max-width: 600px;height:50px;color: red" >
           	Related Videos  
           			 </div>
 
           			 
-          		<div class="col-md-4" style = "min-width: 500px ; max-width : 500px;height:500px;position: relative; overflow-x: hidden">	 
-	<div id="form" >
+          		<div class="col-md-4" style = "right:10px;min-width: 500px ; max-width : 500px;height:500px;position: relative; overflow-x: hidden">	 
 
-
-
-<form method = "post"class="form-inline mr-auto">
-  <input class="form-control mr-sm-2" name ="txtsearch" type="text" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit" id="savebutton" name="search" value="search">Search</button>
-</form>
-
-	</div>
 			
 <table class="table table-striped">
 	
@@ -145,13 +150,21 @@ include_once COMMON.'class.common.video.inc';
 		    <tr>
 			    <td>
 			    <a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >
-			    <?php echo $Video->getTitle()."</br>"; 
+
+			    <?php 
+			    		$id3=$Video->getCreatorID();
+			    		$resultRelated=$_VideoCommentBAO->readCreator($id3);
+			    		if ($resultRelated->getIsSuccess() ) {
+						$user2 = $resultRelated->getResultObject();
+
+
+			    		echo $Video->getTitle()."</br>"; 
 
 			    		echo "Tag : ".$Video->getTag()."</br>"; 
-			    		echo "Creator : ".$Video->getCreatorID()."</br>"; 
+			    		echo "Creator : ".$user2->getFirstName().' '.$user2->getLastName()."</br>"; 
+
 			    		echo "Creator : ".$Video->getCreationDate()."</br>"; 
-
-
+}
 
 			    						?>
 

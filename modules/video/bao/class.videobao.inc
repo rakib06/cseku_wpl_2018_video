@@ -44,6 +44,19 @@ Class VideoBAO{
 	
 	}
 
+		public function readCreator($Video){
+
+		$Result = new Result();	
+		$Result = $this->_VideoDAO->readCreator($Video);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in VideoCommentDAO.readCreator()");		
+
+		return $Result;
+
+	
+	}
+
 	//read an Term object based on its id form Term object
 	public function readVideo($Video){
 
