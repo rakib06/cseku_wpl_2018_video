@@ -288,6 +288,8 @@ function myFunction() {
 			//echo $Video2;	
 			$Result1 = $_VideoCommentBAO->readVideoComment($Video2);
 			
+
+
 			//if DAO access is successful to load all the comments then show them one by one
 			if($Result1->getIsSuccess()){
 			$VideoList = $Result1->getResultObject();
@@ -310,7 +312,7 @@ function myFunction() {
 	<div class="panel panel-danger"style ="position: relative; left: 10px; width:1090px;"> <?php // rc div 1 ?>
       		<div class="panel-heading">
 		<?php
-				echo $user->getFirstName().' '.$user->getLastName().'';
+				echo $user->getFirstName().' '.$user->getLastName().'     '.$Video->getCreationDate();
 							    			} 
 		?>		</div> </div>
 				<div style ="position: relative; left: 10px; width:1090px;"  class="panel panel-danger">
@@ -332,9 +334,15 @@ function myFunction() {
 				</div>
 
 				<?php
+
 				$Res = $_VideoCommentBAO->readVideoReply($Video->getCommentID())->getResultObject();
 				// var_dump($Res);
+				$ResultForReply = $_VideoCommentBAO->readVideoReply($Video->getCommentID());
+				$replyList=$ResultForReply->getResultObject();
+					$count=0;
 				foreach ($Res as $row) {
+					$comment_=$replyList[$count];
+					$count++;
 					$crid=$row->getCreatorID();
 					$Result_crid = $_VideoCommentBAO->readCreator($crid);
 					if ($Result_crid->getIsSuccess() ) {
@@ -344,8 +352,9 @@ function myFunction() {
 	<div class="panel panel-danger"style ="position: relative; left: 100px; width:1000px;" > <?php // rc div 1 ?>
       		<div class="panel-heading">
 		<?php
-
-				echo '     '.$crtr->getFirstName().' '.$crtr->getLastName().'';
+		//problem is here 
+// for reply 
+				echo '     '.$crtr->getFirstName().' '.$crtr->getLastName().'  '.$comment_->getCreationDate();
 							    			} 
 
 					//echo ($row->getCreatorID());

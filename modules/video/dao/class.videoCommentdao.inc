@@ -36,7 +36,7 @@ Class VideoCommentDAO{
 		    $this->_VideoComment->setVideo( $row['VideoID'] );
 		    
 		    $this->_VideoComment->setCommentIDTop($row['CommentIDTop']);
-
+		    $this->_VideoComment->setCreationDate($row['CreationDate']);
 
 		    $VideoCommentList[]=$this->_VideoComment;
    
@@ -63,8 +63,8 @@ Class VideoCommentDAO{
 		
 		$CommentIDTop=$VideoComment->getCommentIDTop();
 
-		$SQL = "INSERT INTO vtms_video_comment(CommentID,Comment,CreatorID,VideoID,CommentIDTop) 
-				VALUES('$VideoCommentID','$VideoComment2','$CreatorID','$VideoID','$CommentIDTop')";
+		$SQL = "INSERT INTO vtms_video_comment(CommentID,Comment,CreatorID,VideoID,CommentIDTop,CreationDate) 
+				VALUES('$VideoCommentID','$VideoComment2','$CreatorID','$VideoID','$CommentIDTop',now())";
 
 		//echo $SQL;
 		//var_dump($SQL);
@@ -151,7 +151,7 @@ Class VideoCommentDAO{
 		    $this->_VideoComment->setVideoID( $row['VideoID'] );
 		    $this->_VideoComment->setComment( $row['Comment'] );
 		    $this->_VideoComment->setCreatorID( $row['CreatorID'] );
-		   
+		   	$this->_VideoComment->setCreationDate($row['CreationDate']);
 		    $this->_VideoComment->setCommentIDTop($row['CommentIDTop']);
 
 
@@ -183,7 +183,7 @@ $Result = new Result();
 		    $this->_VideoComment->setVideoID( $row['VideoID'] );
 		    $this->_VideoComment->setComment( $row['Comment'] );
 		    $this->_VideoComment->setCreatorID( $row['CreatorID'] );
-		   
+		   	$this->_VideoComment->setCreationDate( $row['CreationDate'] );
 		    $this->_VideoComment->setCommentIDTop($row['CommentIDTop']);
 
 

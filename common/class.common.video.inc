@@ -101,6 +101,7 @@ class VideoComment{
     private $_VideoID;
     
     private $_CommentIDTop;
+    private $_CreationDate;
 
     public function setCommentID ( $CommentID ) {
         $this->_CommentID = $CommentID;
@@ -151,6 +152,13 @@ class VideoComment{
     public function getCommentIDTop () {
         return $this->_CommentIDTop;
     }
+    public function setCreationDate( $CreationDate ) {
+        $this->_CreationDate = $CreationDate;
+    }
+
+    public function getCreationDate() {
+        return $this->_CreationDate;
+    }    
 
 }
 
