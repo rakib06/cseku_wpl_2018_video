@@ -318,7 +318,7 @@ function myFunction() {
 				<div style ="position: relative; left: 10px; width:1090px;"  class="panel panel-success">
 					<?php
 						
-							echo $Video->getComment();
+							echo ':  '.$Video->getComment();
 						
 						
 
@@ -347,9 +347,11 @@ function myFunction() {
 					$Result_crid = $_VideoCommentBAO->readCreator($crid);
 					if ($Result_crid->getIsSuccess() ) {
 					$crtr = $Result_crid->getResultObject();
+					$sum=100+$count*50;
+					$sum2=1000-$count*50;
 
 ?>
-	<div class="panel panel-info"style ="position: relative; left: 100px; width:455px;" > <?php // rc div 1 ?>
+	<div class="panel panel-info"style ="position: relative; left: <?php echo $sum.'px'?>; width:455px;" > <?php // rc div 1 ?>
       		<div class="panel-heading">
 		<?php
 		//problem is here 
@@ -361,14 +363,17 @@ function myFunction() {
 					?>
 				</div></div>
 
-			<div style ="position: relative; left: 100px; width:1000px;"  class="panel panel-success">
+			<div style ="position: relative; left: <?php echo $sum.'px'?>; width:<?php echo $sum2.'px'?>;"  class="panel panel-success">
 				<?php
 				// var_dump($row);
-				echo ($row->getComment());
+				echo ':    '.($row->getComment());
 				?>
 				<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
 					<br/>
 					<button type="button" onclick="myFunction(this)" href="#reply" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button> 
+
+
+					
 			</br>
 				
 				</div>
