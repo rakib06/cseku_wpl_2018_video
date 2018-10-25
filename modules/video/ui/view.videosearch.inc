@@ -15,25 +15,19 @@ include_once COMMON.'class.common.video.inc';
 
 	
 	<div id="form" >
-		<form method="post" class="form-horizontal">
 
-				<div class="form-group">
-              	<label class="control-label col-sm-4" for="search">Search Video:</label>
-	              	<div class="col-sm-8">  
-					<input type="text"  name="txtsearch" placeholder="Search video"></input>
-					</div>
-				</div>
-		        <div class="form-group">        
-	            	<div class="col-sm-offset-6 col-sm-4">								
-					<input  type="submit" id="savebutton" name="search" value="Search">
-					</div>
-				</div>	
-		</form>
+
+
+<form method = "post"class="form-inline mr-auto">
+  <input class="form-control mr-sm-2" name ="txtsearch" type="text" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit" id="savebutton" name="search" value="search">Search</button>
+</form>
+
 	</div>
 	</div>
 
 	<div class="panel-body">			
-	<table class="table table-bordered">
+	<table class="table table-striped">
 	<tr>
 		<th>Video Title</th>
 	</tr>	
@@ -62,7 +56,12 @@ include_once COMMON.'class.common.video.inc';
 		    <tr>
 			    <td >
 			    <a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >
-			    <?php echo $Video->getTitle(); ?>
+			    <?php echo $Video->getTitle()."</br>"; 
+			    	  echo "Tag : ".$Video->getTag()."</br>"; 
+			    		echo "Creator : ".$Video->getCreatorID()."</br>"; 
+			    		echo "Creator : ".$Video->getCreationDate()."</br>"; 	
+
+			    		?>
 			    	
 			    </a>
 			    </td>

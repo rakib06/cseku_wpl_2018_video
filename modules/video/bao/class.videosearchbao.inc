@@ -44,6 +44,20 @@ Class VideoBAO{
 	
 	}
 
+	public function relatedVideo($Video,$id,$title){
+
+		$Result = new Result();	
+		$Result = $this->_VideoDAO->relatedVideo($Video,$id,$title);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in VideoDAO.searchVideo()");		
+
+		return $Result;
+
+	
+	}
+
+
 	//read an Term object based on its id form Term object
 	public function readVideo($Video){
 

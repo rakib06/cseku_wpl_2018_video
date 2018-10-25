@@ -108,53 +108,89 @@ include_once COMMON.'class.common.video.inc';
 			<!--playlis div start-->
 				<div class="col-md-4" style = "max-width: 500px;height:500px;position: relative;">
 					<div class="well well-sm" style ="max-width: 600px;height:50px;color: red" >
-          	<a href="video_search.php" onclick="return ; " >Activities </a>
+          	Related Videos  
+          			 </div>
+
+          			 
+          		<div class="col-md-4" style = "min-width: 500px ; max-width : 500px;height:500px;position: relative; overflow-x: hidden">	 
+	<div id="form" >
+
+
+
+<form method = "post"class="form-inline mr-auto">
+  <input class="form-control mr-sm-2" name ="txtsearch" type="text" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit" id="savebutton" name="search" value="search">Search</button>
+</form>
+
+	</div>
+			
+<table class="table table-striped">
+	
+	<?php
+	
+	
+	
+	$Result = $_VideoBAO->relatedVideo($Vedio->getTag(),$Vedio->getID(),$Vedio->getTitle());
+
+	//if DAO access is successful to load all the Terms then show them one by one
+	if($Result->getIsSuccess()){
+
+		$VideoList = $Result->getResultObject();
+
+	?>
+		<?php
+		for($i = 0; $i < sizeof($VideoList); $i++) {
+			$Video = $VideoList[$i];
+			?>
+		    <tr>
+			    <td>
+			    <a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >
+			    <?php echo $Video->getTitle()."</br>"; 
+
+			    		echo "Tag : ".$Video->getTag()."</br>"; 
+			    		echo "Creator : ".$Video->getCreatorID()."</br>"; 
+			    		echo "Creator : ".$Video->getCreationDate()."</br>"; 
+
+
+
+			    						?>
+
+			    	
+			    </a>
+			    </td>
+			    
+		    </tr>
+	    <?php
+
+		}
+
+	}
+	else{
+
+		echo $Result->getResultObject(); //giving failure message
+	}
+
+	?>
+	</table>
+
+
+
+
+
+
           			 </div>
           		<div class="col-md-4" style = "min-width: 500px ; max-width : 500px;height:500px;position: relative; overflow-x: hidden">	 
+          				</br>
+         	<a href="video_search.php" style="color: red" onclick="return ; " >Search Video  </a>
 
-          		 <ul>	 	
-          			 		
-            <!-- <iframe width="144" height="100"
-						src="https://www.youtube.com/embed/0IAPZzGSbME">
-					</iframe> -->
-			<h6>    </h6>
-				 
-            
+         	</br>
+		<a href="video.php" onclick="return ; " >Upload a Video </a>
 
-				
-				
-           </ul>
-
-
-
-<!--upload div start-->
-				<div class="col-md-4" style = "max-width: 500px;height:500px;position: relative;">
-
-					<div class="well well-sm" style ="max-width: 600px;height:50px;color: red" >
-          	<a href="video_search.php" onclick="return ; " >Watch Playlist </a>
-          			 </div>
-					<div class="well well-sm" style ="max-width: 600px;height:50px;color: red" >
-          	<a href="video.php" onclick="return ; " >Upload a video </a>
-          			 </div>
-          		<div class="col-md-4" style = "min-width: 500px ; max-width : 500px;height:500px;position: relative; overflow-x: hidden">	 
-
-          		 <ul>	 	
-          			 		
-            <!-- <iframe width="144" height="100"
-						src="https://www.youtube.com/embed/0IAPZzGSbME">
-					</iframe> -->
-			<h6>    </h6>
-				 
-            
-
-				
-				
-           </ul>
-					
 				</div>
 				
 					 
-					
+						
+          			 </div>
 
 		</div>  <!--upload div end -->
 
@@ -326,7 +362,9 @@ function myFunction() {
 					?>
 					<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
 					<br/>
-					<button type="button" onclick="myFunction(this)" href="#reply" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button> 
+					<button type="button" onclick="myFunction(this)" href="#reply" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button>
+
+
 
 
 					
@@ -372,6 +410,7 @@ function myFunction() {
 					<br/>
 					<button type="button" onclick="myFunction(this)" href="#reply" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button> 
 
+					
 
 					
 			</br>
