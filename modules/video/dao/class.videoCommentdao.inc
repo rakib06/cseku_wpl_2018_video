@@ -139,7 +139,7 @@ Class VideoCommentDAO{
 		
 		$VideoCommentList = array();
 
-		$this->_DB->doQuery("SELECT * FROM vtms_video_comment WHERE VideoID = '".$video."' AND CommentIDTop = '".$i."' ");
+		$this->_DB->doQuery("SELECT CommentID,Comment,CreatorID,VideoID,CommentIDTop, CreationDate FROM vtms_video_comment  WHERE VideoID = '".$video."' AND CommentIDTop = '".$i."' ORDER BY CreationDate DESC ");
 
 		$rows = $this->_DB->getAllRows();
 

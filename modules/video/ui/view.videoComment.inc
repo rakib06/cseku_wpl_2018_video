@@ -309,13 +309,13 @@ function myFunction() {
 			if ($Result5->getIsSuccess() ) {
 				$user = $Result5->getResultObject();
 ?>
-	<div class="panel panel-danger"style ="position: relative; left: 10px; width:1090px;"> <?php // rc div 1 ?>
+	<div class="panel panel-primary"style ="position: relative; left: 10px; width:545px;"> <?php // rc div 1 ?>
       		<div class="panel-heading">
 		<?php
 				echo $user->getFirstName().' '.$user->getLastName().'     '.$Video->getCreationDate();
 							    			} 
 		?>		</div> </div>
-				<div style ="position: relative; left: 10px; width:1090px;"  class="panel panel-danger">
+				<div style ="position: relative; left: 10px; width:1090px;"  class="panel panel-success">
 					<?php
 						
 							echo $Video->getComment();
@@ -349,7 +349,7 @@ function myFunction() {
 					$crtr = $Result_crid->getResultObject();
 
 ?>
-	<div class="panel panel-danger"style ="position: relative; left: 100px; width:1000px;" > <?php // rc div 1 ?>
+	<div class="panel panel-info"style ="position: relative; left: 100px; width:455px;" > <?php // rc div 1 ?>
       		<div class="panel-heading">
 		<?php
 		//problem is here 
@@ -361,11 +361,14 @@ function myFunction() {
 					?>
 				</div></div>
 
-			<div style ="position: relative; left: 100px; width:1000px;"  class="panel panel-danger">
+			<div style ="position: relative; left: 100px; width:1000px;"  class="panel panel-success">
 				<?php
 				// var_dump($row);
 				echo ($row->getComment());
 				?>
+				<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
+					<br/>
+					<button type="button" onclick="myFunction(this)" href="#reply" value="<?php echo($Video->getCommentID()); ?>" class="btn btn-link">Reply</button> 
 			</br>
 				
 				</div>

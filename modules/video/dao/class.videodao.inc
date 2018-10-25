@@ -21,7 +21,7 @@ Class VideoDAO{
 
 		$VideoList = array();
 
-		$this->_DB->doQuery("SELECT * FROM vtms_video");
+		$this->_DB->doQuery("SELECT * FROM vtms_video ORDER BY CreationDate DESC");
 
 		$rows = $this->_DB->getAllRows();
 
@@ -90,7 +90,7 @@ Class VideoDAO{
 	public function readVideo($Video){
 		
 		
-		$SQL = "SELECT * FROM vtms_video WHERE ID='".$Video->getID()."'";
+		$SQL = "SELECT * FROM vtms_video WHERE ID='".$Video->getID()."' ";
 		$this->_DB->doQuery($SQL);
 
 		//reading the top row for this Term from the database

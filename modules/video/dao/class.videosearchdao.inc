@@ -21,7 +21,7 @@ Class VideoDAO{
 
 		$VideoList = array();
 
-		$this->_DB->doQuery("SELECT * FROM vtms_video");
+		$this->_DB->doQuery("SELECT * FROM vtms_video ORDER BY CreationDate DESC");
 
 		$rows = $this->_DB->getAllRows();
 
@@ -53,7 +53,7 @@ Class VideoDAO{
 
 		$VideoList = array();
 
-		$this->_DB->doQuery("SELECT * FROM vtms_video WHERE TagID like '%$tag%' OR Title like '%$tag%' ");
+		$this->_DB->doQuery("SELECT * FROM vtms_video WHERE TagID like '%$tag%' OR Title like '%$tag%' ORDER BY CreationDate DESC ");
 
 		$rows = $this->_DB->getAllRows();
 
