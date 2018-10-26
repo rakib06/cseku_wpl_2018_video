@@ -218,7 +218,7 @@ include_once COMMON.'class.common.video.inc';
 
 		
 
-		</div> 
+
 
 
 
