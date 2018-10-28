@@ -39,6 +39,7 @@ Class VideoDAO{
 
 		    $this->_Video->setIsEmbed( $row['IsEmbed'] );
 		    $this->_Video->setTag( $row['TagID'] );
+		     $this->_Video->setViews( $row['Views'] );
 		    $VideoList[]=$this->_Video;
    
 		}
@@ -51,6 +52,25 @@ Class VideoDAO{
 		$Result->setResultObject($VideoList);
 
 		return $Result;
+	}
+
+
+	public function updateViews($VideoID){
+		$one=1;
+
+		$SQL = "UPDATE vtms_video SET Views = Views + ".$one."
+where ID = '".$VideoID."'";
+	var_dump($SQL);
+
+		$this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+		$SQL = $this->_DB->doQuery($SQL);
+
+	 	$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($SQL);
+
+		return $Result;
+
 	}
 
 	//create Term funtion with the Term object
@@ -114,7 +134,7 @@ Class VideoDAO{
 	    $this->_Video->setLink($row['Link']);
 	    $this->_Video->setIsEmbed( $row['IsEmbed'] );
 	    $this->_Video->setTag( $row['TagID'] );
-
+		$this->_Video->setViews( $row['Views'] );
 
 	 	$Result = new Result();
 		$Result->setIsSuccess(1);

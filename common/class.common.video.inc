@@ -12,6 +12,7 @@ class Video{
     private $_CreationDate;
     private $_Creator;
     private $_Tag;
+    private $_Views;
 
     public function setID ( $ID ) {
         $this->_ID = $ID;
@@ -90,6 +91,13 @@ class Video{
     public function getTag() {
         return $this->_Tag;
     }
+    public function setViews ( $Views ) {
+        $this->_Views = $Views;
+    }
+
+    public function getViews () {
+        return $this->_Views;
+    }
 
 }
 
@@ -128,6 +136,7 @@ class VideoComment{
     public function getCreatorID () {
         return $this->_Creator;
     }
+
 
 
     public function setVideoID( $VideoID ) {

@@ -2,6 +2,7 @@
 
 include_once 'blade/view.VideoComment.blade.inc';
 include_once 'blade/view.videosearch.blade.inc';
+include_once MODULES_VIDEO.'bao/class.videoCommentbao.inc';
 include_once COMMON.'class.common.inc';
 include_once COMMON.'class.common.video.inc';
 
@@ -48,8 +49,17 @@ include_once COMMON.'class.common.video.inc';
 				$id = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				$Video2 = substr($id, -38);
 				$Result1 = $_VideoCommentBAO->readvideo($Video2);
+
+
+
+				
+				
+
 				//if DAO access is successful to load all the comments then show them one by one
 				if($Result1->getIsSuccess()){ // 1st if start 
+/*
+				$_VideoCommentBAO->updateViews($Video2);*/
+
 				$Vedio = $Result1->getResultObject();
 			?> 
 			
@@ -99,8 +109,8 @@ include_once COMMON.'class.common.video.inc';
 		?>	</h5>
 
 
-
-
+				 <!--  <h5 style="color: purple;font-size: medium;" ><?php echo "Views : ".$Vedio->getViews(); ?></h5> 
+ -->
               	  <h5 style="color: purple;font-size: medium;" ><?php echo "Creator's Email : ".$Vedio->getCreatorID(); ?></h5> 
 
 
@@ -202,11 +212,11 @@ include_once COMMON.'class.common.video.inc';
 
           			 </div>
           		<div class="col-md-4" style = "min-width: 500px ; max-width : 500px;height:500px;position: relative; overflow-x: hidden">	 
-          				</br>
-         	<a href="video_search.php" style="color: red" onclick="return ; " >Search Video  </a>
+          				
+         <!-- 	<a href="video_search.php" style="color: red" onclick="return ; " >Search Video  </a> -->
 
-         	</br>
-		<a href="video.php" onclick="return ; " >Upload a Video </a>
+         	
+		<a style ="color: red;" href="video.php" onclick="return ; " >Upload a Video </a>
 
 				</div>
 				

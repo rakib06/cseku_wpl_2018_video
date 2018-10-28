@@ -29,6 +29,16 @@ Class VideoBAO{
 
 		return $Result;
 	}
+	public function updateViews($VideoID){
+		$Result = new Result();	
+		$Result = $this->_VideoCommentDAO->updateViews($VideoID);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in VideoCommentDAO.updateVideoComment()");		
+
+		return $Result;
+	}
+
 
 	//create Term funtion with the Term object
 	public function createVideo($Video){

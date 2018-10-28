@@ -78,6 +78,9 @@ Class VideoCommentDAO{
 		return $Result;
 	}
 
+
+
+
 	public function readCreator($CreatorID){
 
 		$SQL = "SELECT * FROM ums_user
@@ -218,6 +221,26 @@ $Result = new Result();
 		return $Result;
 
 	}
+
+
+	public function updateViews($VideoID){
+		$one=1;
+
+		$SQL = "UPDATE vtms_video SET Views = Views + ".$one."
+where ID = '".$VideoID."'";
+	var_dump($SQL);
+
+		$this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+		$SQL = $this->_DB->doQuery($SQL);
+
+	 	$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($SQL);
+
+		return $Result;
+
+	}
+
 
 	//delete an VideoComment based on its id of the database
 	public function deleteVideoComment($VideoComment){

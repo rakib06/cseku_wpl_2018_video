@@ -124,6 +124,17 @@ Class VideoCommentBAO{
 		return $Result;
 	}
 
+	public function updateViews($VideoID){
+		$Result = new Result();	
+		$Result = $this->_VideoCommentDAO->updateViews($VideoID);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in VideoCommentDAO.updateVideoComment()");		
+
+		return $Result;
+	}
+
+
 	//delete an existing Term
 	public function deleteVideoComment($VideoComment){
 
