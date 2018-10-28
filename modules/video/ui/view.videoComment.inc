@@ -4,7 +4,16 @@ include_once 'blade/view.VideoComment.blade.inc';
 include_once 'blade/view.videosearch.blade.inc';
 include_once COMMON.'class.common.inc';
 include_once COMMON.'class.common.video.inc';
+
+
+//view count 
+
+
 ?>
+
+
+
+
 
 <div class="panel panel-default"> <?php //1st div >  ?>
 	
@@ -250,31 +259,123 @@ include_once COMMON.'class.common.video.inc';
 
 		 		<div id = "comment"class="panel-heading" style="display: block;">Add a public comment</div>
 		 		<div id ="txtcomment" class="panel-body">
-					<textarea class="form-control" name="txtComment" 
-					value="<?php if(isset($_GET['edit'])) echo $getROW->getVideo();  ?>" >
-					</textarea>
-					<input type="hidden" name="CreatorID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCreatorID();  ?>" />
-					<input type="hidden" name="videoID" value="<?php if(isset($_GET['edit'])) echo $getROW->getVideoID();  ?>" />
-					</br>
-					<input class="btn btn-success btn-sm"  type="submit" id="savebutton"  name="save" value="Comment">
-				</div>
 
+		 				<div class="form-group">
+            <!--   	<label class="control-label col-sm-4" for="txtlink">Comment:</label> -->
+              	<div class="col-sm-8">  
+              		
+				<input type="text" name="txtComment" class="form-control input-lg"  placeholder="Write your comment here" value="<?php
+					
+					if(isset($_GET['edit'])){
+						$link = $getROW->getVideo();
+						echo $link;
+						} ?>" required />
+				</div>
+					
+</div>
+					<!-- <textarea class="form-control" name="txtComment" 
+					value="<?php if(isset($_GET['edit'])) echo $getROW->getVideo();  ?>"  required>
+					</textarea> -->
+<div class="form-group">
+
+					<input type="hidden" name="CreatorID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCreatorID();  ?>" />
+					</div>
+					<div class="form-group">
+
+					<input type="hidden" name="videoID" value="<?php if(isset($_GET['edit'])) echo $getROW->getVideoID();  ?>" />
+					</div>
+
+				<!-- 	<div class="form-group">
+					
+					<input class="btn btn-success btn-sm"  type="submit" id="savebutton"  name="save" value="Comment">
+					</div>
+				</div> -->
+		
+
+
+				 <div class="form-group">        
+	              <div class="col-sm-offset-4 col-sm-4">					
+	</br>
+						<?php
+						if(isset($_GET['edit']))
+						{
+							?>
+							<input  type="submit" id="savebutton" name="update" value="Update">
+							<?php
+						}
+						else
+						{
+							?>
+							<input class="btn btn-success btn-sm"  type="submit"  id="savebutton" name="save" value="Comment">
+							<?php
+						}
+						?>
+					</div>
+				</div>	
+			</div>
+
+	</form>
 <!-- This is for reply box -->
 	<!-- extra	 -->		
-
+<form method="post" class="panel panel-info" >
 
 <!-- extra	 -->			
-				<div id = "reply" class= "panel-heading" style="display: none;" >Add a public reply</div>
+		<div id = "reply" class= "panel-heading" style="display: none;" >Add a public reply</div>
 				<div id =reply_txt style="display: none;" class="panel-body">
-					<textarea class="form-control" name="txtReply" 
-					value="<?php if(isset($_GET['edit'])) echo $getROW->getVideo();  ?>" >
-					</textarea>
-					<input type="hidden" name="Reply_CreatorID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCreatorID();  ?>" />
-					<input type="hidden" name="Reply_videoID" value="<?php if(isset($_GET['edit'])) echo $getROW->getVideoID();  ?>" />
-					<input type="hidden" id="CommentID" name="CommentID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCommentID();  ?>" />
-					</br>
-					<input class="btn btn-success btn-sm"  type="submit" id="replysavebutton"  name="save2" value="Reply">
+
+
+		 				<div class="form-group">
+
+            <!--   	<label class="control-label col-sm-4" for="txtlink">Comment:</label> -->
+              	<div class="col-lg-10">  
+              		
+				<input type="text" name="txtReply" class="form-control input-lg"  placeholder="Write your reply here" value="<?php
+					
+					if(isset($_GET['edit'])){
+						$link = $getROW->getVideo();
+						echo $link;
+						} ?>"  required/>
 				</div>
+					
+</div>
+
+					<!-- <textarea class="form-control" name="txtReply" 
+					value="<?php if(isset($_GET['edit'])) echo $getROW->getVideo();  ?>" >
+					</textarea> -->
+					<div class="form-group">
+					<input type="hidden" name="Reply_CreatorID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCreatorID();  ?>" />
+					</div>
+					<div class="form-group">
+					<input type="hidden" name="Reply_videoID" value="<?php if(isset($_GET['edit'])) echo $getROW->getVideoID();  ?>" />
+					</div>
+					<div class="form-group">
+					<input type="hidden" id="CommentID" name="CommentID" value="<?php if(isset($_GET['edit'])) echo $getROW->getCommentID();  ?>" />
+						</div>
+
+
+				 <div class="form-group">        
+	              <div class="col-sm-offset-4 col-sm-4">					
+	</br>
+						<?php
+						if(isset($_GET['edit']))
+						{
+							?>
+							<input  type="submit" id="replysavebutton" name="update" value="Update">
+							<?php
+						}
+						else
+						{
+							?>
+							<input class="btn btn-success btn-sm"  type="submit"  id="replysavebutton" name="save2" value="Reply">
+							<?php
+						}
+						?>
+					</div>
+				</div>	
+					<!-- </br>
+					<input class="btn btn-success btn-sm"  type="submit" id="replysavebutton"  name="save2" value="Reply"> -->
+				</div>
+
 
 <!-- extra		 -->	
 
@@ -367,7 +468,7 @@ function myFunction() {
 				<div style ="position: relative; left: 10px; width:1090px;"  class="panel panel-success">
 					<?php
 						
-							echo ':  '.$Video->getComment();
+							echo ' '.$Video->getComment();
 						
 						
 
@@ -417,7 +518,8 @@ function myFunction() {
 			<div style ="position: relative; left: <?php echo $sum.'px'?>; width:<?php echo $sum2.'px'?>;"  class="panel panel-success">
 				<?php
 				// var_dump($row);
-				echo ':    '.($row->getComment());
+				echo '    '.($row->getComment());
+
 				?>
 				<input type="hidden" name="comment_id" id="comment_id"value="<?php echo($Video->getCommentID()); ?>">
 					<br/>
@@ -456,5 +558,5 @@ function myFunction() {
  -->
 </div> <!-- //last panel er div ?> 
  -->
-
+</div>
 

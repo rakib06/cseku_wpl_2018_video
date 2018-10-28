@@ -21,7 +21,7 @@ include_once COMMON.'class.common.video.inc';
               	<div class="col-sm-8">  
 				
 					<input type="text" class="form-control" name="txtName" placeholder="Video Title" 
-					value="<?php if(isset($_GET['edit'])) echo $getROW->getTitle();  ?>" />
+					value="<?php if(isset($_GET['edit'])) echo $getROW->getTitle();  ?>" required/>
 				</div>
 				</div>	
 
@@ -30,20 +30,20 @@ include_once COMMON.'class.common.video.inc';
               	<div class="col-sm-8">  
 
 					<input type="text" name="txtdes" class="form-control" placeholder="Video Description" 
-					value="<?php if(isset($_GET['edit'])) echo $getROW->getDescription();  ?>" />
+					value="<?php if(isset($_GET['edit'])) echo $getROW->getDescription();  ?>" required/>
 				</div>
 				</div>
 
 				<div class="form-group">
               	<label class="control-label col-sm-4" for="txtlink">Video Link:</label>
               	<div class="col-sm-8">  
-
+              		
 				<input type="text" name="txtlink" class="form-control"  placeholder="Link" value="<?php
 					
 					if(isset($_GET['edit'])){
 						$link = $getROW->getLink();
 						echo $link;
-						} ?>" />
+						} ?>" required />
 				</div>
 				</div>				
 
@@ -52,7 +52,7 @@ include_once COMMON.'class.common.video.inc';
               	<div class="col-sm-8">  
 
 					<input type="text" name="txttag" class="form-control" placeholder="TagName" 
-					value="<?php if(isset($_GET['edit'])) echo $getROW->getTag();  ?>" />
+					value="<?php if(isset($_GET['edit'])) echo $getROW->getTag();  ?>" required />
 				</div>
 				</div>
 			<!-- 	<div class="form-group">
@@ -115,6 +115,7 @@ include_once COMMON.'class.common.video.inc';
 			    <td><?php echo $Video->getTitle(); ?></td>
 			    
 			    <td><a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >view</a></td>
+			    
 			    <td><a href="?edit=<?php echo $Video->getID(); ?>" onclick="return confirm('sure to edit !'); " >edit</a></td>
 			    <td><a href="?del=<?php echo $Video->getID(); ?>" onclick="return confirm('sure to delete !'); " >delete</a></td>
 		    </tr>
