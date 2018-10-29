@@ -1,4 +1,7 @@
-Digital University
+#cseku_wpl_2018_Video_Tutorial_Manager
+
+
+#Project Name: Digital University
 
 Copyright of this content is reserved by the founders, various contributors and the KU CSE discipline.
 
@@ -6,82 +9,14 @@ version 2018
 
 Founder, Framework and Architecture: Dr. KAZI MASUDUL ALAM, Associate  Professor, CSE Discipline, Khulna University
 
-Development Contributors:
---------------------------------
-
-Video Comments:
+#Module Names: Video
+Video Tutorial Manager :
 --------------------
 Rokib 160206
 Mahmud 150239
 Swagato 160232
 
 
-Events Calendar: 
--------------------------
-soma	140206
-ripon	140230
-anika	140232
-
-News:
--------------------------
-riya	140215
-
-Result:
--------------------------
-tauhid	140202
-nionta	140224
-eklasur	130212
-
-
-Question Archive:
------------------------
-shamima	140221
-subrota	140236
-joy	140239
-
-
-File Management:
------------------------
-rifat	140227
-imran	140231
-zaminur	140240
-
-Course Registration:
-------------------------
-akash	140204
-rabbi	140210
-suman	140220
-
-
-Forum:
-------------------
-nazia	140208
-fahim	140217
-arpon	140218
-
-
-Club:
---------------
-hasib	140228
-mushfiq	140237
 
 
 
-
-
-Attendance:
-------------------
-pappu	140225
-
-
-Project Archive: 
--------------------
-farhana	140203
-tania	140241
-
-
-Survey:
----------------
-milon	120203
-mahin	110217
-noman	120209
