@@ -7,7 +7,7 @@ include_once MODULES_VIDEO.'dao/class.videosearchdao.inc';
 /*
 	Term Business Object 
 */
-Class VideoBAO{
+Class VideoSearchBAO{
 
 	private $_DB;
 	private $_VideoDAO;

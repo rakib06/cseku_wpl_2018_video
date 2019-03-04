@@ -30,6 +30,6 @@ define('MODULES_SURVEY',MODULES.'/survey/');
 define('MODULES_USER',MODULES.'/user/');
 define('MODULES_VIDEO',MODULES.'/video/');
 define('MODULES_JOB',MODULES.'/job/');
-
+define('MODULES_TASK',MODULES.'task/');
 
 ?>

@@ -4,7 +4,7 @@ include_once COMMON.'class.common.inc';
 include_once COMMON.'class.common.video.inc';
 include_once UTILITY.'class.util.inc';
 
-Class VideoDAO{
+Class VideoSearchDAO{
 
 	private $_DB;
 	private $_Video;

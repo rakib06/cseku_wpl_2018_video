@@ -688,6 +688,7 @@
 		<Menu>
 			<ParentMenu>Student Center</ParentMenu>
 			<Title>Video Tutorial</Title>
+			<Link>video_comment.php</Link>
 			<Permissions>
 				<Permission>VIDEO_C</Permission>
 				<Permission>VIDEO_R</Permission>
@@ -714,7 +715,7 @@
 				</Permissions>
 			</Menu>
 
-
+			
 		<Menu>
 			<ParentMenu>Student Center</ParentMenu>
 			<Title>Project</Title>
@@ -876,35 +877,96 @@
 				</Permissions>
 			</Menu>
 
-<!-- Job -->
-	<Menu>
-		<ParentMenu></ParentMenu>
-		<Title>Job</Title>
-		<Permissions>
-			<Permission>JOB_C</Permission>
-			<Permission>JOB_R</Permission>
-			<Permission>JOB_U</Permission>
-			<Permission>JOB_D</Permission>									
-		</Permissions>			
-	</Menu>
+<!-- Task -->
 
 			<Menu>
-				<ParentMenu>Job</ParentMenu>
-				<Title>Manage Job</Title>
+				<ParentMenu></ParentMenu>
+				<Title>Task</Title>
+				<Link>assign_task_ajax.php</Link>
+					<Permissions>
+					<Permission>TASK_C</Permission>
+					<Permission>TASK_R</Permission>
+					<Permission>TASK_U</Permission>
+					<Permission>TASK_D</Permission>									
+				</Permissions>			
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Task</ParentMenu>
+				<Title>Manage Task</Title>
 				<Permissions>
-					<Permission>JOB_C</Permission>
-					<Permission>JOB_U</Permission>									
-					<Permission>JOB_D</Permission>	
-					<Permission>JOB_R</Permission>
+					<Permission>TASK_C</Permission>
+					<Permission>TASK_U</Permission>									
+					<Permission>TASK_D</Permission>	
+					<Permission>TASK_R</Permission>
 				</Permissions>
 			</Menu>
 
-				<Menu>
-					<ParentMenu>Manage Job</ParentMenu>
-					<Title>Search Job</Title>
-					<Link>search_job.php</Link>
-					<Permissions>
-						<Permission>JOB_R</Permission>
-					</Permissions>
-				</Menu>
+			<Menu>
+				<ParentMenu>Task</ParentMenu>
+				<Title>My Task</Title>
+				<Link>task_details.php</Link>
+				<Permissions>
+					<Permission>TASK_C</Permission>
+					<Permission>TASK_U</Permission>									
+					<Permission>TASK_D</Permission>	
+					<Permission>TASK_R</Permission>
+				</Permissions>
+			</Menu>
+
+			
+
+
+			<Menu>
+				<ParentMenu>Manage Task</ParentMenu>
+				<Title>Creat Task</Title>
+				<Link>create_task.php</Link>
+				<Permissions>
+					<Permission>TASK_C</Permission>
+					<Permission>TASK_U</Permission>									
+					<Permission>TASK_D</Permission>	
+					<Permission>TASK_R</Permission>
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Manage Task</ParentMenu>
+				<Title>Manage Category</Title>
+				<Link>manage_category.php</Link>
+				<Permissions>
+					<Permission>TASK_CATEGORY_C</Permission>
+					<Permission>TASK_CATEGORY_U</Permission>									
+					<Permission>TASK_CATEGORY_D</Permission>	
+					<Permission>TASK_CATEGORY_R</Permission>
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>My Task</ParentMenu>
+				<Title>My Calender</Title>
+				<Link>my_cal.php</Link>
+				<Permissions>
+					<Permission>TASK_C</Permission>
+					<Permission>TASK_U</Permission>									
+					<Permission>TASK_D</Permission>	
+					<Permission>TASK_R</Permission>
+				</Permissions>
+			</Menu>
+
+			
+			<Menu>
+				<ParentMenu>My Task</ParentMenu>
+				<Title>Show My task</Title>
+				<Link>my_task.php</Link>
+				<Permissions>
+					<Permission>TASK_C</Permission>
+					<Permission>TASK_U</Permission>									
+					<Permission>TASK_D</Permission>	
+					<Permission>TASK_R</Permission>
+				</Permissions>
+			</Menu>				
+	
 </Menus>
+
+
+

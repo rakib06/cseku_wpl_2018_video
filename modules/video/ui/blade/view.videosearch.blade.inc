@@ -4,7 +4,7 @@ include_once UTILITY.'class.util.inc';
 include_once MODULES_VIDEO.'bao/class.videosearchbao.inc';
 
 
-$_VideoBAO = new VideoBAO();
+$_Video = new Video();
 $_DB = DBUtil::getInstance();
 //$Video = new Video();
 /* saving a new Term account*/

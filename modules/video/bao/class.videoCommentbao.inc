@@ -27,6 +27,19 @@ Class VideoCommentBAO{
 
 		return $Result;
 	}
+	public function relatedVideo($Video,$id,$title){
+
+		$Result = new Result();	
+		$Result = $this->_VideoCommentDAO->relatedVideo($Video,$id,$title);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in VideoDAO.searchVideo()");		
+
+		return $Result;
+
+	
+	}
+
 	public function createVideoComment($VideoComment){
 
 		$Result = new Result();	

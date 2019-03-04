@@ -18,6 +18,19 @@ Class VideoBAO{
 
 	}
 
+	public function relatedVideo($Video,$id,$title){
+
+		$Result = new Result();	
+		$Result = $this->_VideoDAO->relatedVideo($Video,$id,$title);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in VideoDAO.searchVideo()");		
+
+		return $Result;
+
+	
+	}
+
 	//get all Terms value
 	public function getAllVideos(){
 
@@ -28,6 +41,18 @@ Class VideoBAO{
 			$Result->setResultObject("Database failure in VideoDAO.getAllVideos()");		
 
 		return $Result;
+	}
+	public function searchVideo($Video){
+
+		$Result = new Result();	
+		$Result = $this->_VideoDAO->searchVideo($Video);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in VideoDAO.searchVideo()");		
+
+		return $Result;
+
+	
 	}
 	public function updateViews($VideoID){
 		$Result = new Result();	

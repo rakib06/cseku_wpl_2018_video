@@ -2,7 +2,7 @@
 
 include_once UTILITY.'class.util.inc';
 include_once MODULES_VIDEO.'bao/class.videoCommentbao.inc';
-
+include_once MODULES_VIDEO.'bao/class.videobao.inc';
 $_VideoCommentBAO = new VideoCommentBAO();
 $_DB = DBUtil::getInstance();
 

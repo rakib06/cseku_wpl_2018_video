@@ -607,6 +607,64 @@ Class UserDAO{
 	}
 
 	//read an user object based on its email form user object with all the roles and related permissions
+
+	public function findUserByEmail($email){
+	
+		$Result = new Result();
+
+		//$Email = $User->getEmail();
+		//$Password = $User->getPassword();
+		
+		//start::user reading information
+		$SQL = "SELECT * FROM ums_user WHERE IsDeleted is NULL and Email='$email'";
+	
+		$this->_DB->doQuery($SQL);
+		//reading the top row for this user from the database
+		$row = $this->_DB->getTopRow();
+
+		if(isset($row)){
+
+			$this->_User = new User();
+
+			//preparing the user object
+		    $this->_User->setID ( $row['ID']);
+		    $this->_User->setUniversityID ( $row['UniversityID'] );   
+		    $this->_User->setEmail ( $row['Email'] );
+		    $this->_User->setPassword ( $row['Password'] );
+
+		    $this->_User->setFirstName( $row['FirstName'] );
+		    $this->_User->setMiddleName( $row['MiddleName'] );
+		    $this->_User->setLastName( $row['LastName'] );
+
+		    $Discipline = new Discipline();
+		    $Discipline->setID($row['DisciplineID']);
+		    $Discipline = $this->_DisciplineDAO->readDiscipline($Discipline)->getResultObject();
+		    $this->_User->setDiscipline( $Discipline );
+
+		    $this->_User->setStatus( $row['Status'] );
+		    $this->_User->setIsLogged( $row['IsLogged'] );	
+		    $this->_User->setIsArchived( $row['IsArchived'] );
+		    $this->_User->setIsDeleted( $row['IsDeleted'] );
+
+
+		    //$Result = new Result();
+
+			$Result->setIsSuccess(1);
+			$Result->setResultObject($this->_User);
+
+		}
+			//end::user reading information
+
+		
+			
+
+		return $Result;
+	}
+
+
+
+
+
 	public function readUserRolesPermissions($User){
 	
 		$Result = new Result();

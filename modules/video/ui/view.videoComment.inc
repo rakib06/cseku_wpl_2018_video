@@ -46,6 +46,9 @@ include_once COMMON.'class.common.video.inc';
 	 	 		
 
 	 	 	<?php
+
+
+	 	 	//ekhane problem 
 				$id = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				$Video2 = substr($id, -38);
 				$Result1 = $_VideoCommentBAO->readvideo($Video2);
@@ -154,7 +157,7 @@ include_once COMMON.'class.common.video.inc';
 	
 	
 	
-	$Result = $_VideoBAO->relatedVideo($Vedio->getTag(),$Vedio->getID(),$Vedio->getTitle());
+	$Result = $_VideoCommentBAO->relatedVideo($Vedio->getTag(),$Vedio->getID(),$Vedio->getTitle());
 
 	//if DAO access is successful to load all the Terms then show them one by one
 	if($Result->getIsSuccess()){

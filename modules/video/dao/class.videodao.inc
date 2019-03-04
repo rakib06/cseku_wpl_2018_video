@@ -55,6 +55,76 @@ Class VideoDAO{
 	}
 
 
+
+
+
+	public function relatedVideo($tag,$id,$title){
+
+		$VideoList = array();
+
+		$this->_DB->doQuery("SELECT * FROM vtms_video WHERE  (TagID like '%$tag%' OR Title like '%$title%') AND  ID <> '$id' ORDER BY CreationDate DESC ");
+
+		$rows = $this->_DB->getAllRows();
+
+		for($i = 0; $i < sizeof($rows); $i++) {
+			$row = $rows[$i];
+
+			$this->_Video = new Video();
+
+		    $this->_Video->setID ( $row['ID']);
+		    $this->_Video->setTitle( $row['Title'] );
+		    $this->_Video->setDescription( $row['Description'] );
+		    $this->_Video->setLink( $row['Link'] );
+		    $this->_Video->setIsEmbed( $row['IsEmbed'] );
+		    $this->_Video->setTag( $row['TagID'] );
+		    $this->_Video->setCreatorID( $row['CreatorID'] );
+		    $this->_Video->setCreationDate( $row['CreationDate'] );
+
+		    
+		    $VideoList[]=$this->_Video;
+   
+		}	
+		
+	 	$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($VideoList);
+
+		return $Result;
+	}	
+	//create Term funtion with the Term object
+	public function searchVideo($tag){
+
+		$VideoList = array();
+
+		$this->_DB->doQuery("SELECT * FROM vtms_video WHERE TagID like '%$tag%' OR Title like '%$tag%' ORDER BY CreationDate DESC ");
+
+		$rows = $this->_DB->getAllRows();
+
+		for($i = 0; $i < sizeof($rows); $i++) {
+			$row = $rows[$i];
+
+			$this->_Video = new Video();
+
+		    $this->_Video->setID ( $row['ID']);
+		    $this->_Video->setTitle( $row['Title'] );
+		    $this->_Video->setDescription( $row['Description'] );
+		    $this->_Video->setLink( $row['Link'] );
+		    $this->_Video->setIsEmbed( $row['IsEmbed'] );
+		    $this->_Video->setTag( $row['TagID'] );
+		    $this->_Video->setCreationDate( $row['CreationDate'] );
+		    $this->_Video->setCreatorID( $row['CreatorID'] );
+		    $VideoList[]=$this->_Video;
+   
+		}	
+		
+	 	$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($VideoList);
+
+		return $Result;
+	}
+
+
 	public function updateViews($VideoID){
 		$one=1;
 
@@ -206,6 +276,6 @@ where ID = '".$VideoID."'";
 
 }
 
-////$_Log->log(LogUtil::$DEBUG," exit the class.videodao.inc");
+#$_Log->log(LogUtil::$DEBUG," exit the class.videodao.inc");
 
 ?>

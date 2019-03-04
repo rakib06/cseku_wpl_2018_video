@@ -114,8 +114,10 @@ include_once COMMON.'class.common.video.inc';
 		    <tr>
 			    <td><?php echo $Video->getTitle(); ?></td>
 			    
-			    <td><a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >view</a></td>
-			    
+
+
+
+			    <td><a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >view</a></td> 
 			    <td><a href="?edit=<?php echo $Video->getID(); ?>" onclick="return confirm('sure to edit !'); " >edit</a></td>
 			    <td><a href="?del=<?php echo $Video->getID(); ?>" onclick="return confirm('sure to delete !'); " >delete</a></td>
 		    </tr>

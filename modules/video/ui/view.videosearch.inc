@@ -3,7 +3,7 @@
 include_once 'blade/view.videosearch.blade.inc';
 include_once COMMON.'class.common.inc';
 include_once COMMON.'class.common.video.inc';
-//include_once 'blade/view.video.blade.inc';
+include_once 'blade/view.video.blade.inc';
 
 
 ?>

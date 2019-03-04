@@ -762,29 +762,53 @@
 		<category>VIDEO COMMENT</category>
 	</permission>
 
-	<!-- JOB Category -->
+	<!-- Task Category -->
 	<permission>
-		<id>JOB_C</id>
-		<name>JOB_C</name>
-		<category>JOB</category>
+		<id>TASK_C</id>
+		<name>TASK_C</name>
+		<category>TASK</category>
 	</permission>
 
 	<permission>
-		<id>JOB_R</id>
-		<name>JOB_R</name>
-		<category>JOB</category>
+		<id>TASK_R</id>
+		<name>TASK_R</name>
+		<category>TASK</category>
 	</permission>
 
 	<permission>
-		<id>JOB_U</id>
-		<name>JOB_U</name>
-		<category>JOB</category>
+		<id>TASK_U</id>
+		<name>TASK_U</name>
+		<category>TASK</category>
 	</permission>
 
 	<permission>
-		<id>JOB_D</id>
-		<name>JOB_D</name>
-		<category>JOB</category>
+		<id>TASK_D</id>
+		<name>TASK_D</name>
+		<category>TASK</category>
+	</permission>
+
+	<permission>
+		<id>TASK_CATEGORY_C</id>
+		<name>TASK_CATEGORY_C</name>
+		<category>TASK_CATEGORY</category>
+	</permission>
+
+	<permission>
+		<id>TASK_CATEGORY_R</id>
+		<name>TASK_CATEGORY_R</name>
+		<category>TASK_CATEGORY</category>
+	</permission>
+
+	<permission>
+		<id>TASK_CATEGORY_U</id>
+		<name>TASK_CATEGORY_U</name>
+		<category>TASK_CATEGORY</category>
+	</permission>
+
+	<permission>
+		<id>TASK_CATEGORY_D</id>
+		<name>TASK_CATEGORY_D</name>
+		<category>TASK_CATEGORY</category>
 	</permission>
 
 

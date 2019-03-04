@@ -50,7 +50,7 @@ function print_top_menu($globalMenu,$logoutMenu)
 		
 		//buiding full menu layout, first part menu, next part user logout menu
 		$menu_content = 	'<div class="dropdown"><div class="row">';
-		$menu_content = 	$menu_content.'<div class="col-sm-11">';
+		$menu_content = 	$menu_content.'<div class="col-sm-10">';
 		$menu_content = 	$menu_content.build_top_nav_menu($globalMenu);
 		$menu_content = 	$menu_content.'</div>';
 		$menu_content = 	$menu_content.'<div class="col-sm-1">'.$logoutMenu;
